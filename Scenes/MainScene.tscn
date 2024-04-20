@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Sounds/Jump.wav" type="AudioStream" id=1]
 [ext_resource path="res://Scripts/Collectible.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/Sprites/Orange.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Sprites/Frank_Idle.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Sprites/Background.png" type="Texture" id=7]
+[ext_resource path="res://Sounds/Collectible.wav" type="AudioStream" id=8]
 
 [sub_resource type="PhysicsMaterial" id=7]
 friction = 0.0
@@ -179,6 +180,13 @@ texture = ExtResource( 4 )
 position = Vector2( 364, 389 )
 script = ExtResource( 2 )
 
+[node name="delaysound" type="Timer" parent="Area2D"]
+wait_time = 0.2
+one_shot = true
+
+[node name="collectibleSound" type="AudioStreamPlayer" parent="Area2D"]
+stream = ExtResource( 8 )
+
 [node name="Orange" type="Sprite" parent="Area2D"]
 texture = ExtResource( 5 )
 
@@ -188,6 +196,13 @@ shape = SubResource( 6 )
 [node name="Area2D2" type="Area2D" parent="."]
 position = Vector2( 518, 307 )
 script = ExtResource( 2 )
+
+[node name="delaysound" type="Timer" parent="Area2D2"]
+wait_time = 0.2
+one_shot = true
+
+[node name="collectibleSound" type="AudioStreamPlayer" parent="Area2D2"]
+stream = ExtResource( 8 )
 
 [node name="Orange" type="Sprite" parent="Area2D2"]
 texture = ExtResource( 5 )
@@ -199,6 +214,13 @@ shape = SubResource( 6 )
 position = Vector2( 600, 307 )
 script = ExtResource( 2 )
 
+[node name="delaysound" type="Timer" parent="Area2D3"]
+wait_time = 0.2
+one_shot = true
+
+[node name="collectibleSound" type="AudioStreamPlayer" parent="Area2D3"]
+stream = ExtResource( 8 )
+
 [node name="Orange" type="Sprite" parent="Area2D3"]
 texture = ExtResource( 5 )
 
@@ -209,6 +231,13 @@ shape = SubResource( 6 )
 position = Vector2( 984, 229 )
 script = ExtResource( 2 )
 
+[node name="delaysound" type="Timer" parent="Area2D4"]
+wait_time = 0.2
+one_shot = true
+
+[node name="collectibleSound" type="AudioStreamPlayer" parent="Area2D4"]
+stream = ExtResource( 8 )
+
 [node name="Orange" type="Sprite" parent="Area2D4"]
 texture = ExtResource( 5 )
 
@@ -218,6 +247,10 @@ shape = SubResource( 6 )
 [connection signal="body_entered" from="RigidBody2D/Area2D" to="RigidBody2D" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="RigidBody2D/Area2D" to="RigidBody2D" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="Area2D/delaysound" to="Area2D" method="_on_delaysound_timeout"]
 [connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="Area2D2/delaysound" to="Area2D" method="_on_delaysound_timeout"]
 [connection signal="body_entered" from="Area2D3" to="Area2D3" method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="Area2D3/delaysound" to="Area2D" method="_on_delaysound_timeout"]
 [connection signal="body_entered" from="Area2D4" to="Area2D4" method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="Area2D4/delaysound" to="Area2D" method="_on_delaysound_timeout"]

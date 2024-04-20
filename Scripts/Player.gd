@@ -7,12 +7,12 @@ var touch_ground = true
 
 onready var position2D = $Position2D
 onready var bullet = preload('res://Scenes/Bullet.tscn')
+var sceneB = load("res://Scenes/Bullet.tscn")
 
 onready var jumpSfx = $jumpSound
 
 var playerDirection = 'Right'
 
-var sceneB = load("res://Scenes/Bullet.tscn")
 
 func _physics_process(delta):
 	move()
